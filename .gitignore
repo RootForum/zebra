@@ -52,6 +52,15 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+docs/build/
+doc/_build/
+doc/build/
 
 # PyBuilder
 target/
+
+# Configuration Script
+Makefile
+
+# Configuration files
+zebra.conf
