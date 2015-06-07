@@ -2,8 +2,8 @@
 
 [![Code Climate](https://codeclimate.com/github/RootForum/zebra/badges/gpa.svg)](https://codeclimate.com/github/RootForum/zebra)
 
-**Zebra** is an acronym for *__Z__FS __E__nhanced __B__ackup &amp; __R__estore
-__A__pplication* &ndash; that being said, it shouldn't be too hard to guess
+**Zebra** is an acronym for *ZFS Enhanced Backup &amp; Restore
+Application* &ndash; that being said, it shouldn't be too hard to guess
 what purpose *Zebra* is designed for. Yes, you're right: *Zebra* is a backup
 application. Being more precise, *Zebra* is a command line application,
 configurable by simple plain text files. Therefore, it easily runs on headless
