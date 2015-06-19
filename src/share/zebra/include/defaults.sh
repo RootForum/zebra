@@ -32,7 +32,7 @@ ZB_ETC=etc
 # Name of the zebra configuration directory
 ZB_ZEBRAD=zebra.d
 
-# Name of the yajam configuration file
+# Name of the zebra configuration file
 ZB_CONF=zebra.conf
 
 # Current version number

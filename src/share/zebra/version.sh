@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-# set up the yajam environment
+# set up the zebra environment
 SCRIPTPATH=$(/bin/realpath $0)
 SCRIPTPREFIX=${SCRIPTPATH%/*}
 . ${SCRIPTPREFIX}/common.sh
