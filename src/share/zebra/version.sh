@@ -25,6 +25,6 @@ SCRIPTPATH=$(/bin/realpath $0)
 SCRIPTPREFIX=${SCRIPTPATH%/*}
 . ${SCRIPTPREFIX}/common.sh
 
-echo $ZEBRA_VERSION
+zb_echo $ZEBRA_VERSION
 
 exit ${ZEBRA_STATUS}

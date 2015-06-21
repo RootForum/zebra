@@ -25,3 +25,9 @@
 
 # Time Zone
 : ${TIMEZONE:=none}
+
+# ZFS zpool to be scanned for building up an initial zebra tab
+: ${ZPOOL:=tank}
+
+# zebra job tab
+: ${JOBTAB:=jobtab}
