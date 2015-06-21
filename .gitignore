@@ -64,3 +64,4 @@ Makefile
 
 # Configuration files
 zebra.conf
+jobtab

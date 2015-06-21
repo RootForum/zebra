@@ -10,3 +10,18 @@
 #   Inline comments are also supported.
 # * Strings including white spaces must be enclosed by quotation marks
 # * White spaces around the assignment operator (=) are NOT allowed!
+
+# ZFS SETTINGS
+# ============
+
+# ZFS pool on which the jail infrastructure resides
+#
+#ZPOOL=tank
+
+
+# ZEBRA JOB SETTINGS
+# ==================
+
+# Zebra job tab to be used by default
+#
+#JOBTAB=jobtab

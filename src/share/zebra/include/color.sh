@@ -21,10 +21,10 @@
 # SOFTWARE.
 
 if ! [ -t 1 ] || ! [ -t 2 ]; then
-    USE_COLORS="no"
+    ZB_USE_COLORS="no"
 fi
 
-if [ ${USE_COLORS} = "yes" ]; then
+if [ ${ZB_USE_COLORS} = "yes" ]; then
     COLOR_RESET="\033[0;0m"
     COLOR_RESET_REAL="${COLOR_RESET}"
     COLOR_BOLD="\033[1m"
@@ -56,3 +56,4 @@ fi
 : ${COLOR_IGNORE:=${COLOR_DARK_GRAY}}
 : ${COLOR_SKIP:=${COLOR_AMBER}}
 : ${COLOR_FAIL:=${COLOR_RED}}
+: ${COLOR_EM:=${COLOR_LIGHT_MAGENTA}${COLOR_BOLD}}

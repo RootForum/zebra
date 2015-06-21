@@ -26,20 +26,25 @@ SCRIPTPREFIX=${SCRIPTPATH%/*}
 . ${SCRIPTPREFIX}/common.sh
 
 umsg="${COLOR_BOLD}usage: ${COLOR_RED}${COLOR_BOLD}zebra ${COLOR_WHITE}["
+umsg="${umsg}${COLOR_RED}${COLOR_BOLD}-d${COLOR_WHITE}] ["
 umsg="${umsg}${COLOR_RED}${COLOR_BOLD}-e ${COLOR_GREEN}${COLOR_BOLD}etcdir"
 umsg="${umsg}${COLOR_WHITE}] [${COLOR_RED}${COLOR_BOLD}-N${COLOR_WHITE}]"
+umsg="${umsg} [${COLOR_RED}${COLOR_BOLD}-S${COLOR_WHITE}]"
 umsg="${umsg} ${COLOR_RED}${COLOR_BOLD}command ${COLOR_WHITE}[${COLOR_GREEN}"
 umsg="${umsg}${COLOR_BOLD}options${COLOR_WHITE}]"
 
-echo -e "$umsg
+[ "${ZB_SILENT}" = "yes" ] || echo -e "$umsg
 
 ${COLOR_RED}${COLOR_BOLD}Options:
-    -e ${COLOR_GREEN}${COLOR_BOLD}etcdir${COLOR_RESET}   -- Specify an alternate etc/ dir where zebra configuration
+${COLOR_RED}${COLOR_BOLD}    -d${COLOR_RESET}          -- Show debug messages
+${COLOR_RED}${COLOR_BOLD}    -e ${COLOR_GREEN}${COLOR_BOLD}etcdir${COLOR_RESET}   -- Specify an alternate etc/ dir where zebra configuration
                    resides.
 ${COLOR_RED}${COLOR_BOLD}    -N${COLOR_RESET}          -- Disable colors
+${COLOR_RED}${COLOR_BOLD}    -S${COLOR_RESET}          -- Silent mode suppressing any output
 
 ${COLOR_RED}${COLOR_BOLD}Commands:
 ${COLOR_GREEN}${COLOR_BOLD}    help${COLOR_RESET}        -- Show usage
+${COLOR_GREEN}${COLOR_BOLD}    init${COLOR_RESET}        -- Create new zebra tab
 ${COLOR_GREEN}${COLOR_BOLD}    backup${COLOR_RESET}      -- Create new backups
 ${COLOR_GREEN}${COLOR_BOLD}    restore${COLOR_RESET}     -- Restore an existing backup
 ${COLOR_GREEN}${COLOR_BOLD}    version${COLOR_RESET}     -- Show the version of zebra

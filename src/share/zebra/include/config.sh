@@ -25,3 +25,15 @@
 
 # Time Zone
 : ${TIMEZONE:=none}
+
+# ZFS zpool to be scanned for building up an initial zebra tab
+: ${ZPOOL:=tank}
+
+# zebra job tab
+: ${JOBTAB:=jobtab}
+
+# Default backup mode
+: ${DEFAULT_MODE:=${ZB_MODE_FULL}}
+
+# Default backup generations
+: ${DEFAULT_GENS:=1}

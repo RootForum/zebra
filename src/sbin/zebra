@@ -28,22 +28,29 @@ ZEBRAPREFIX=${ZEBRAPREFIX}/share/zebra
 ZEBRA_VERSION="0.1-pre"
 
 # undocumented flag for debugging purposes only
-SETX=""
+ZB_SETX=""
 
-while getopts "e:Nx" FLAG; do
+while getopts "de:NSx" FLAG; do
     case ${FLAG} in
+        d)
+            ZB_DEBUG="yes"
+            ;;
         e)
             if [ ! -d "${OPTARG}" ]; then
-                echo "Error: argument '${OPTARG}' is not a directory"
+                [ "${ZB_SILENT}" = "yes" ] || \
+                    echo "Error: argument '${OPTARG}' is not a directory"
                 exit 1
             fi
             export ZEBRA_ETC=${OPTARG}
             ;;
         N)
-            USE_COLORS="no"
+            ZB_USE_COLORS="no"
+            ;;
+        S)
+            ZB_SILENT="yes"
             ;;
         x)
-            SETX="-x"
+            ZB_SETX="-x"
             ;;
         *)
             CMD=help
@@ -59,7 +66,7 @@ shift $((OPTIND-1))
 shift
 
 case "${CMD}" in
-    help|backup|restore|version)
+    help|init|backup|restore|version)
         ;;
     *)
         CMD=help
@@ -70,6 +77,8 @@ esac
 CMD_ENV="PATH=${PATH} ZEBRA_VERSION=${ZEBRA_VERSION}"
 [ -n "${ZEBRA_ETC}" ] && CMD_ENV="${CMD_ENV} ZEBRA_ETC=${ZEBRA_ETC}"
 [ -n "${ZEBRA_STATUS}" ] && CMD_ENV="${CMD_ENV} ZEBRA_STATUS=${ZEBRA_STATUS}"
-[ -n "${USE_COLORS}" ] && CMD_ENV="${CMD_ENV} USE_COLORS=${USE_COLORS}"
+[ -n "${ZB_USE_COLORS}" ] && CMD_ENV="${CMD_ENV} ZB_USE_COLORS=${ZB_USE_COLORS}"
+[ -n "${ZB_DEBUG}" ] && CMD_ENV="${CMD_ENV} ZB_DEBUG=${ZB_DEBUG}"
+[ -n "${ZB_SILENT}" ] && CMD_ENV="${CMD_ENV} ZB_SILENT=${ZB_SILENT}"
 
-exec env -i ${CMD_ENV} /bin/sh ${SETX} "${ZEBRAPREFIX}/${CMD}.sh" $@
+exec env -i ${CMD_ENV} /bin/sh ${ZB_SETX} "${ZEBRAPREFIX}/${CMD}.sh" $@

@@ -25,6 +25,6 @@ SCRIPTPATH=$(/bin/realpath $0)
 SCRIPTPREFIX=${SCRIPTPATH%/*}
 . ${SCRIPTPREFIX}/common.sh
 
-echo "I am Backup"
+zb_echo "I am Backup"
 
 exit ${ZEBRA_STATUS}
