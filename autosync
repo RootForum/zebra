@@ -201,3 +201,5 @@ if [ "${SIM}" -ne "1" ]; then
 else
     info "would merge upstream into local branch ${cyan}${LOCAL_BRANCH}${white} now"
 fi
+
+info "synchronisation succeeded. You can now push to ${cyan}origin/${LOCAL_BRANCH}"
