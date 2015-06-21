@@ -43,9 +43,10 @@ install:
 	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0640 src/etc/zebra.d/zebra.conf.sample $(PREFIX)/etc/zebra.d
 	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0640 src/etc/zebra.d/src.conf.sample $(PREFIX)/etc/zebra.d
 	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0755 -d $(PREFIX)/share/zebra
+	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/backup.sh $(PREFIX)/share/zebra
 	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/common.sh $(PREFIX)/share/zebra
 	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/help.sh $(PREFIX)/share/zebra
-	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/backup.sh $(PREFIX)/share/zebra
+	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/init.sh $(PREFIX)/share/zebra
 	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/restore.sh $(PREFIX)/share/zebra
 	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/version.sh $(PREFIX)/share/zebra
 	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0755 -d $(PREFIX)/share/zebra/include
