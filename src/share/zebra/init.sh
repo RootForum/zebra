@@ -133,7 +133,7 @@ for i in ${ZB_INIT_DATASETS}; do
     printf "\t${ZB_DEFAULT_WDAY}\t${ZB_DEFAULT_MODE}"
     printf "\t${ZB_DEFAULT_GENS}\t${ZB_DEFAULT_COMP}"
     printf "\t${ZB_DEFAULT_ENC}\t${ZB_DEFAULT_PRE}"
-    printf "\t${ZB_DEFAULT_POST}\t${i}\n"
+    printf "\t${ZB_DEFAULT_POST}\t${ZB_DEFAULT_REC}\t${i}\n"
 done
 
 if [ "${ZB_INIT_SIMULATE}" != "yes" ]; then

@@ -84,6 +84,9 @@ ZB_DEFAULT_PRE=none
 # Default post snapshot hook
 ZB_DEFAULT_POST=none
 
+# Default recursive operation setting
+ZB_DEFAULT_REC=no
+
 # Template for the job tab file header
 ZB_JOBTAB_HEADER="# ++++++++++++++++++++++
 # + Zebra Job Tab File +
@@ -112,7 +115,8 @@ ZB_JOBTAB_HEADER="# ++++++++++++++++++++++
 # enc      encrypt the backup      yes, no
 # pre      pre-snapshot hook       none or custom function
 # post     post-snapshot hook      none or custom function
+# rec      recursive operation     yes, no
 # dataset  zfs dataset             valid zfs dataset
 #
-#minute\thour\tmday\tmonth\twday\tmode\tgens\tcomp\tenc\tpre\tpost\tdataset
+#minute\thour\tmday\tmonth\twday\tmode\tgens\tcomp\tenc\tpre\tpost\trec\tdataset
 #\n"
