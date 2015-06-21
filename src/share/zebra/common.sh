@@ -129,6 +129,17 @@ zb_die() {
     exit $1
 }
 
+zb_rm_file() {
+    # delete an existing file and be explicit about the result of the operation.
+    if [ $# -ne 1 ]; then
+        zb_die 1 "zb_rm() expects 1 argument: \"file\""
+    fi
+    {
+        ${b_rm} ${1}
+    }> /dev/null 2>&1
+    return $?
+}
+
 zb_version_sys() {
     local version=$(${b_sysctl} -qn kern.osrelease | ${b_sed} 's/-.*//g' | \
         ${b_grep} -E '^[[:digit:]]{1,2}\.[[:digit:]]{1,2}$')

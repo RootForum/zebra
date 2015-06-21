@@ -31,3 +31,9 @@
 
 # zebra job tab
 : ${JOBTAB:=jobtab}
+
+# Default backup mode
+: ${DEFAULT_MODE:=${ZB_MODE_FULL}}
+
+# Default backup generations
+: ${DEFAULT_GENS:=1}
