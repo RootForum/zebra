@@ -19,4 +19,7 @@ offers:
 * Optional encryption of backup files
 * Remote storage of backups via OpenSSH
 
+If you want to follow the development status, please have a look at our publicly
+accessible [Kanban Board](https://kanboard.my-universe.com/?controller=board&action=readonly&token=21292466e1cc30c96dea052c5fa9dc62c217e07f3e0ff2fa93b16a07097e).
+
 This project is powered by the [RootForum](https://www.rootforum.org) community.
