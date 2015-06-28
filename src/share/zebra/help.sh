@@ -25,29 +25,29 @@ SCRIPTPATH=$(/bin/realpath $0)
 SCRIPTPREFIX=${SCRIPTPATH%/*}
 . ${SCRIPTPREFIX}/common.sh
 
-umsg="${COLOR_BOLD}usage: ${COLOR_RED}${COLOR_BOLD}zebra ${COLOR_WHITE}["
-umsg="${umsg}${COLOR_RED}${COLOR_BOLD}-d${COLOR_WHITE}] ["
-umsg="${umsg}${COLOR_RED}${COLOR_BOLD}-e ${COLOR_GREEN}${COLOR_BOLD}etcdir"
-umsg="${umsg}${COLOR_WHITE}] [${COLOR_RED}${COLOR_BOLD}-N${COLOR_WHITE}]"
-umsg="${umsg} [${COLOR_RED}${COLOR_BOLD}-S${COLOR_WHITE}]"
-umsg="${umsg} ${COLOR_RED}${COLOR_BOLD}command ${COLOR_WHITE}[${COLOR_GREEN}"
-umsg="${umsg}${COLOR_BOLD}options${COLOR_WHITE}]"
+umsg="${ZB_COLOR_BOLD}usage: ${ZB_COLOR_RED}${ZB_COLOR_BOLD}zebra ${ZB_COLOR_WHITE}["
+umsg="${umsg}${ZB_COLOR_RED}${ZB_COLOR_BOLD}-d${ZB_COLOR_WHITE}] ["
+umsg="${umsg}${ZB_COLOR_RED}${ZB_COLOR_BOLD}-e ${ZB_COLOR_GREEN}${ZB_COLOR_BOLD}etcdir"
+umsg="${umsg}${ZB_COLOR_WHITE}] [${ZB_COLOR_RED}${ZB_COLOR_BOLD}-N${ZB_COLOR_WHITE}]"
+umsg="${umsg} [${ZB_COLOR_RED}${ZB_COLOR_BOLD}-S${ZB_COLOR_WHITE}]"
+umsg="${umsg} ${ZB_COLOR_RED}${ZB_COLOR_BOLD}command ${ZB_COLOR_WHITE}[${ZB_COLOR_GREEN}"
+umsg="${umsg}${ZB_COLOR_BOLD}options${ZB_COLOR_WHITE}]"
 
 [ "${ZB_SILENT}" = "yes" ] || echo -e "$umsg
 
-${COLOR_RED}${COLOR_BOLD}Options:
-${COLOR_RED}${COLOR_BOLD}    -d${COLOR_RESET}          -- Show debug messages
-${COLOR_RED}${COLOR_BOLD}    -e ${COLOR_GREEN}${COLOR_BOLD}etcdir${COLOR_RESET}   -- Specify an alternate etc/ dir where zebra configuration
+${ZB_COLOR_RED}${ZB_COLOR_BOLD}Options:
+${ZB_COLOR_RED}${ZB_COLOR_BOLD}    -d${ZB_COLOR_RESET}          -- Show debug messages
+${ZB_COLOR_RED}${ZB_COLOR_BOLD}    -e ${ZB_COLOR_GREEN}${ZB_COLOR_BOLD}etcdir${ZB_COLOR_RESET}   -- Specify an alternate etc/ dir where zebra configuration
                    resides.
-${COLOR_RED}${COLOR_BOLD}    -N${COLOR_RESET}          -- Disable colors
-${COLOR_RED}${COLOR_BOLD}    -S${COLOR_RESET}          -- Silent mode suppressing any output
+${ZB_COLOR_RED}${ZB_COLOR_BOLD}    -N${ZB_COLOR_RESET}          -- Disable colors
+${ZB_COLOR_RED}${ZB_COLOR_BOLD}    -S${ZB_COLOR_RESET}          -- Silent mode suppressing any output
 
-${COLOR_RED}${COLOR_BOLD}Commands:
-${COLOR_GREEN}${COLOR_BOLD}    help${COLOR_RESET}        -- Show usage
-${COLOR_GREEN}${COLOR_BOLD}    init${COLOR_RESET}        -- Create new zebra tab
-${COLOR_GREEN}${COLOR_BOLD}    backup${COLOR_RESET}      -- Create new backups
-${COLOR_GREEN}${COLOR_BOLD}    restore${COLOR_RESET}     -- Restore an existing backup
-${COLOR_GREEN}${COLOR_BOLD}    version${COLOR_RESET}     -- Show the version of zebra
+${ZB_COLOR_RED}${ZB_COLOR_BOLD}Commands:
+${ZB_COLOR_GREEN}${ZB_COLOR_BOLD}    help${ZB_COLOR_RESET}        -- Show usage
+${ZB_COLOR_GREEN}${ZB_COLOR_BOLD}    init${ZB_COLOR_RESET}        -- Create new zebra tab
+${ZB_COLOR_GREEN}${ZB_COLOR_BOLD}    backup${ZB_COLOR_RESET}      -- Create new backups
+${ZB_COLOR_GREEN}${ZB_COLOR_BOLD}    restore${ZB_COLOR_RESET}     -- Restore an existing backup
+${ZB_COLOR_GREEN}${ZB_COLOR_BOLD}    version${ZB_COLOR_RESET}     -- Show the version of zebra
 "
 
 exit ${ZEBRA_STATUS}
