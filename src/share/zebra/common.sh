@@ -37,10 +37,16 @@ cd /
 # include early output handler
 . ${SCRIPTPREFIX}/include/early/output.sh
 
+# include binary detection
+. ${SCRIPTPREFIX}/include/early/binary.sh
+
+# module-specific variables
+zbb_realpath=$(zb_detect_binary "realpath")
+
 # set up configurable settings
 # look for the zebra configuration file
 [ -z "${ZEBRA_ETC}" ] &&
-    ZEBRA_ETC=$(${b_realpath} ${SCRIPTPREFIX}/../../${ZB_ETC})
+    ZEBRA_ETC=$(${zbb_realpath} ${SCRIPTPREFIX}/../../${ZB_ETC})
 # If this is a relative path, add in ${PWD} as a cd / is done.
 [ "${ZEBRA_ETC#/}" = "${ZEBRA_ETC}" ] && \
     ZEBRA_ETC="${SAVED_PWD}/${ZEBRA_ETC}"
@@ -57,3 +63,6 @@ fi
 
 # include normal output handler
 . ${SCRIPTPREFIX}/include/normal/output.sh
+
+# include global auxiliary functions
+. ${SCRIPTPREFIX}/include/normal/aux.sh
