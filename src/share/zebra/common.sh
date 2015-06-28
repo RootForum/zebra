@@ -20,42 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-zb_detect_binary() {
-    local BINDIRS="/bin /usr/bin /sbin /usr/sbin /usr/local/bin /usr/local/sbin"
-    local rval=""
-    for i in ${BINDIRS}; do
-        if [ -x "${i}/${1}" ]; then
-            rval="${i}/${1}"
-            break
-        fi
-    done
-    echo $rval
-}
-
-b_awk=$(zb_detect_binary "awk")
-b_cap_mkdb=$(zb_detect_binary "cap_mkdb")
-b_cat=$(zb_detect_binary "cat")
-b_chflags=$(zb_detect_binary "chflags")
-b_cp=$(zb_detect_binary "cp")
-b_grep=$(zb_detect_binary "grep")
-b_ln=$(zb_detect_binary "ln")
-b_ls=$(zb_detect_binary "ls")
-b_make=$(zb_detect_binary "make")
-b_mergemaster=$(zb_detect_binary "mergemaster")
-b_mkdir=$(zb_detect_binary "mkdir")
-b_more=$(zb_detect_binary "more")
-b_mount=$(zb_detect_binary "mount")
-b_mv=$(zb_detect_binary "mv")
-b_pw=$(zb_detect_binary "pw")
-b_realpath=$(zb_detect_binary "realpath")
-b_rm=$(zb_detect_binary "rm")
-b_sed=$(zb_detect_binary "sed")
-b_svn=$(zb_detect_binary "svn")
-[ -z "${b_svn}" ] && b_svn=$(zb_detect_binary "svnlite")
-b_sysctl=$(zb_detect_binary "sysctl")
-b_wc=$(zb_detect_binary "wc")
-b_zfs=$(zb_detect_binary "zfs")
-b_zpool=$(zb_detect_binary "zpool")
+# include binary detection
+. ${SCRIPTPREFIX}/include/binary.sh
 
 zb_svn_flags="--quiet --non-interactive --trust-server-cert"
 
