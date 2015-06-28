@@ -20,11 +20,19 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-# set up the zebra environment
-SCRIPTPATH=$(/bin/realpath $0)
-SCRIPTPREFIX=${SCRIPTPATH%/*}
-. ${SCRIPTPREFIX}/common.sh
+# include binary detection
+. ${SCRIPTPREFIX}/include/early/binary.sh
 
-echo $ZEBRA_VERSION
+# module-specific variables
+zbb_rm=$(zb_detect_binary "rm")
 
-exit ${ZEBRA_STATUS}
+zb_rm_file() {
+    # delete an existing file and be explicit about the result of the operation.
+    if [ $# -ne 1 ]; then
+        zb_die 1 "zb_rm() expects 1 argument: \"file\""
+    fi
+    {
+        ${zbb_rm} ${1}
+    }> /dev/null 2>&1
+    return $?
+}

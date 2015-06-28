@@ -20,11 +20,23 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-# set up the zebra environment
-SCRIPTPATH=$(/bin/realpath $0)
-SCRIPTPREFIX=${SCRIPTPATH%/*}
-. ${SCRIPTPREFIX}/common.sh
+none() {
+    # A function that simply does nothing
+    return 0
+}
 
-echo $ZEBRA_VERSION
+max() {
+    # Return the maximum of two integers
+    [ $# -ne 2 ] && return 1
+    [ "${1}" -ge "${2}" ] && echo ${1} && return 0
+    echo ${2}
+    return 0
+}
 
-exit ${ZEBRA_STATUS}
+min() {
+    # Return the maximum of two integers
+    [ $# -ne 2 ] && return 1
+    [ "${1}" -le "${2}" ] && echo ${1} && return 0
+    echo ${2}
+    return 0
+}

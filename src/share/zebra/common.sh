@@ -28,8 +28,6 @@ cd /
 # Pre-set information from calling binary
 : ${ZEBRA_STATUS:=0}
 : ${ZB_USE_COLORS:=yes}
-: ${ZB_DEBUG:=no}
-: ${ZB_SILENT:=no}
 
 # include non-configurable defaults
 . ${SCRIPTPREFIX}/include/early/defaults.sh

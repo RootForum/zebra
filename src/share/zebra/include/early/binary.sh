@@ -34,7 +34,6 @@ zb_detect_binary() {
 
 b_awk=$(zb_detect_binary "awk")
 b_grep=$(zb_detect_binary "grep")
-b_logger=$(zb_detect_binary "logger")
 b_mount=$(zb_detect_binary "mount")
 b_realpath=$(zb_detect_binary "realpath")
 b_rm=$(zb_detect_binary "rm")
