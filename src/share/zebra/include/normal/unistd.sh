@@ -20,14 +20,19 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-# This file defines configurable defaults, which can be overridden
-# by the zebra configuration file.
+# include binary detection
+. ${SCRIPTPREFIX}/include/early/binary.sh
 
-# Time Zone
-: ${TIMEZONE:=none}
+# module-specific variables
+zbb_rm=$(zb_detect_binary "rm")
 
-# ZFS zpool to be scanned for building up an initial zebra tab
-: ${ZPOOL:=tank}
-
-# zebra job tab
-: ${JOBTAB:=jobtab}
+zb_rm_file() {
+    # delete an existing file and be explicit about the result of the operation.
+    if [ $# -ne 1 ]; then
+        zb_die 1 "zb_rm() expects 1 argument: \"file\""
+    fi
+    {
+        ${zbb_rm} ${1}
+    }> /dev/null 2>&1
+    return $?
+}

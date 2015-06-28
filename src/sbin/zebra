@@ -30,10 +30,13 @@ ZEBRA_VERSION="0.1-pre"
 # undocumented flag for debugging purposes only
 ZB_SETX=""
 
-while getopts "de:NSx" FLAG; do
+# increment or decrement for the log level
+ZB_LOG_INCREMENT=0
+
+while getopts "de:NSVvx" FLAG; do
     case ${FLAG} in
         d)
-            ZB_DEBUG="yes"
+            ZB_LOG_INCREMENT=5
             ;;
         e)
             if [ ! -d "${OPTARG}" ]; then
@@ -47,7 +50,13 @@ while getopts "de:NSx" FLAG; do
             ZB_USE_COLORS="no"
             ;;
         S)
-            ZB_SILENT="yes"
+            ZB_LOG_INCREMENT=-5
+            ;;
+        V)
+            ZB_LOG_INCREMENT=$((${ZB_LOG_INCREMENT}-1))
+            ;;
+        v)
+            ZB_LOG_INCREMENT=$((${ZB_LOG_INCREMENT}+1))
             ;;
         x)
             ZB_SETX="-x"
@@ -78,7 +87,6 @@ CMD_ENV="PATH=${PATH} ZEBRA_VERSION=${ZEBRA_VERSION}"
 [ -n "${ZEBRA_ETC}" ] && CMD_ENV="${CMD_ENV} ZEBRA_ETC=${ZEBRA_ETC}"
 [ -n "${ZEBRA_STATUS}" ] && CMD_ENV="${CMD_ENV} ZEBRA_STATUS=${ZEBRA_STATUS}"
 [ -n "${ZB_USE_COLORS}" ] && CMD_ENV="${CMD_ENV} ZB_USE_COLORS=${ZB_USE_COLORS}"
-[ -n "${ZB_DEBUG}" ] && CMD_ENV="${CMD_ENV} ZB_DEBUG=${ZB_DEBUG}"
-[ -n "${ZB_SILENT}" ] && CMD_ENV="${CMD_ENV} ZB_SILENT=${ZB_SILENT}"
+[ -n "${ZB_LOG_INCREMENT}" ] && CMD_ENV="${CMD_ENV} ZB_LOG_INCREMENT=${ZB_LOG_INCREMENT}"
 
 exec env -i ${CMD_ENV} /bin/sh ${ZB_SETX} "${ZEBRAPREFIX}/${CMD}.sh" $@

@@ -25,6 +25,6 @@ SCRIPTPATH=$(/bin/realpath $0)
 SCRIPTPREFIX=${SCRIPTPATH%/*}
 . ${SCRIPTPREFIX}/common.sh
 
-zb_echo "I am Restore"
+echo "I am Restore"
 
 exit ${ZEBRA_STATUS}
