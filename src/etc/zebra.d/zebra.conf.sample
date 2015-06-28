@@ -25,3 +25,30 @@
 # Zebra job tab to be used by default
 #
 #JOBTAB=jobtab
+
+
+# ZEBRA LOGGING SETTINGS
+# ======================
+
+# Log level
+# Can be one of 'debug', 'info', 'notice', 'warn', 'error'
+#
+#LOG_LEVEL=notice
+
+# Destination to log to
+# Can be one of 'file' or 'syslog'
+#
+#LOG_DESTINATION=file
+
+# Log file to use when destination is set to file
+#
+#LOG_FILE="/var/log/zebra.log"
+
+# Log target to use when destination is set to syslog.
+# Can be set to any valid syslog target. Recommendation is to use one of
+# the 'local0' through 'local7' targets and configure syslog appropriately by
+# e. g. adding this to /etc/syslog.conf:
+#
+#  local0.*   /var/log/zebra.log
+#
+#LOG_TARGET="user"

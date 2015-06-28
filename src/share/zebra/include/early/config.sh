@@ -31,3 +31,15 @@
 
 # zebra job tab
 : ${JOBTAB:=jobtab}
+
+# zebra log level
+: ${LOG_LEVEL:=notice}
+
+# zebra log destination
+: ${LOG_DESTINATION:=file}
+
+# zebra log file
+: ${LOG_FILE:="/var/log/zebra.log"}
+
+# zebra log target
+: ${LOG_TARGET:="user"}
