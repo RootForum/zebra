@@ -31,14 +31,3 @@ zb_detect_binary() {
     done
     echo $rval
 }
-
-b_awk=$(zb_detect_binary "awk")
-b_grep=$(zb_detect_binary "grep")
-b_mount=$(zb_detect_binary "mount")
-b_realpath=$(zb_detect_binary "realpath")
-b_rm=$(zb_detect_binary "rm")
-b_sed=$(zb_detect_binary "sed")
-b_sysctl=$(zb_detect_binary "sysctl")
-b_wc=$(zb_detect_binary "wc")
-b_zfs=$(zb_detect_binary "zfs")
-b_zpool=$(zb_detect_binary "zpool")
