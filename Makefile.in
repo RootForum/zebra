@@ -50,9 +50,17 @@ install:
 	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/restore.sh $(PREFIX)/share/zebra
 	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/version.sh $(PREFIX)/share/zebra
 	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0755 -d $(PREFIX)/share/zebra/include
-	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/include/color.sh $(PREFIX)/share/zebra/include
-	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/include/config.sh $(PREFIX)/share/zebra/include
-	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/include/defaults.sh $(PREFIX)/share/zebra/include
+	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0755 -d $(PREFIX)/share/zebra/include/early
+	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/include/early/binary.sh $(PREFIX)/share/zebra/include/early
+	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/include/early/color.sh $(PREFIX)/share/zebra/include/early
+	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/include/early/config.sh $(PREFIX)/share/zebra/include/early
+	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/include/early/defaults.sh $(PREFIX)/share/zebra/include/early
+	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/include/early/output.sh $(PREFIX)/share/zebra/include/early
+	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0755 -d $(PREFIX)/share/zebra/include/normal
+	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/include/normal/aux.sh $(PREFIX)/share/zebra/include/normal
+	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/include/normal/output.sh $(PREFIX)/share/zebra/include/normal
+	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/include/normal/unistd.sh $(PREFIX)/share/zebra/include/normal
+	$(INSTALL) -o $(OWNER) -g $(GROUP) -m 0644 src/share/zebra/include/normal/zfs.sh $(PREFIX)/share/zebra/include/normal
 
 deinstall:
 	$(DELETE) -f $(PREFIX)/sbin/zebra
