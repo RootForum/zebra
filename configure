@@ -32,6 +32,12 @@ detect_binary() {
     echo $rval
 }
 
+detect_cc() {
+    local cc=$(detect_binary "clang")
+    [ -z "${cc}" ] && cc=$(detect_binary "gcc")
+    echo ${cc}
+}
+
 # Detect some binaries needed
 b_basename=$(detect_binary "basename")
 b_grep=$(detect_binary "grep")
@@ -50,7 +56,11 @@ OWNER=root
 GROUP=$($b_id -gn ${OWNER})
 
 # Internal settings
-CONFDIR=$(/bin/realpath $0)
+if [ -z "${b_realpath}" ]; then
+    CONFDIR=$(pwd)
+else
+    CONFDIR=$(${b_realpath} $0)
+fi
 CONFDIR=${CONFDIR%\/*}
 TEMPLATE="${CONFDIR}/Makefile.in"
 MAKEFILE="${CONFDIR}/Makefile"
@@ -60,6 +70,7 @@ IGNORE_OS="yes"
 OS="$(${b_uname} -s)"
 MAJOR=$(${b_uname} -r | $b_sed 's/\..*//g')
 SOFTWARE="zebra"
+CC=$(detect_cc)
 
 # Colors
 if ! [ -t 1 ] || ! [ -t 2 ]; then
@@ -202,16 +213,23 @@ if [ -z "${b_zfs}" ]; then
     printf "could not be detected on your system.\n"
 fi
 
+if [ -z "${CC}" ]; then
+    printf "${amber}>>> Warning: ${normal}could not detect a ${cyan}C compiler ${normal}binary "
+    printf "on your system.\nTesting will therefore not work."
+fi
+
 if [ "${SIM}" -ge "1" ]; then
     printf "${amber}Configuration results ${normal}${magenta}(simulation "
     printf "only)${normal}:\n"
     printf "${green}>>> ${white}Install binary:        ${cyan}${b_install}\n"
+    printf "${green}>>> ${white}C compiler binary:     ${cyan}${CC}\n"
     printf "${green}>>> ${white}Installation prefix:   ${cyan}${PREFIX}\n"
     printf "${green}>>> ${white}Installation owner:    ${cyan}${OWNER}\n"
     printf "${green}>>> ${white}Installation group:    ${cyan}${GROUP}\n"
 else
     $b_sed "s@%{INSTALL_BINARY}@${b_install}@g" $TEMPLATE | \
         $b_sed "s@%{DELETE_BINARY}@${b_rm}@g" | \
+        $b_sed "s@%{CC}@${CC}@g" | \
         $b_sed "s@%{PREFIX}@${PREFIX}@g" | \
         $b_sed "s@%{OWNER}@${OWNER}@g" | \
         $b_sed "s@%{SOFTWARE}@${SOFTWARE}@g" | \

@@ -24,6 +24,7 @@ PREFIX	= %{PREFIX}
 OWNER	= %{OWNER}
 GROUP	= %{GROUP}
 SOFTWARE= %{SOFTWARE}
+CC		= %{CC}
 
 .PHONY: help install deinstall clean
 
