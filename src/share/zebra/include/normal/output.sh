@@ -200,7 +200,7 @@ _zb_log_syslog() {
     esac
 
     # output the log message
-    ${zbb_logger} -t "${prefix}" -p "${LOG_TARGET}.${level}"  "${2}"
+    ${zbb_logger} -t "${prefix}" -p "${LOG_TARGET}.${level}" "${2}"
 }
 
 zb_log() {

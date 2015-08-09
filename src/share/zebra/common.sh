@@ -64,3 +64,9 @@ fi
 
 # include global auxiliary functions
 . ${SCRIPTPREFIX}/include/normal/aux.sh
+
+# include file operation functions
+. ${SCRIPTPREFIX}/include/normal/unistd.sh
+
+# include ZFS operation functions
+. ${SCRIPTPREFIX}/include/normal/zfs.sh

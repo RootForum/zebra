@@ -24,6 +24,7 @@
 . ${SCRIPTPREFIX}/include/early/binary.sh
 
 # module-specific variables
+zbb_wc=$(zb_detect_binary "wc")
 zbb_zfs=$(zb_detect_binary "zfs")
 zbb_zpool=$(zb_detect_binary "zpool")
 
@@ -36,7 +37,7 @@ zb_zfs_create() {
         local rval=0
     else
         {
-            ${b_zfs} create ${2} ${1}
+            ${zbb_zfs} create ${2} ${1}
         }> /dev/null 2>&1
         local rval=$?
     fi
@@ -53,7 +54,7 @@ zb_zfs_destroy() {
     [ "${3}" = "yes" ] && flags="${flags} -n"
     [ "${4}" != "yes" ] && zb_prog_msg "Deleting zfs dataset ${1}"
     {
-        ${b_zfs} destroy ${flags} ${1};
+        ${zbb_zfs} destroy ${flags} ${1};
     }> /dev/null 2>&1
     local rval=$?
     [ "${rval}" -ne "0" ] && [ "${4}" != "yes" ] && zb_prog_fail
@@ -68,7 +69,7 @@ zb_zfs_exists() {
         die 1 "zb_zfs_exists() expects 1 argument: \"dataset\""
     fi
     {
-        local rval=$(${b_zfs} list -H -t all -o name ${1} | ${b_wc} -l)
+        local rval=$(${zbb_zfs} list -H -t all -o name ${1} | ${zbb_wc} -l)
     }> /dev/null 2>&1
     [ ${rval} -eq "1" ] && return 0
     return 1
@@ -81,7 +82,7 @@ zb_zpool_exists() {
         die 1 "zb_zpool_exists() expects 1 argument: \"zpool\""
     fi
     {
-        local rval=$(${b_zpool} list -H -o name ${1} | ${b_wc} -l)
+        local rval=$(${zbb_zpool} list -H -o name ${1} | ${zbb_wc} -l)
     }> /dev/null 2>&1
     [ ${rval} -eq "1" ] && return 0
     return 1
@@ -93,7 +94,7 @@ zb_zfs_list_datasets() {
         die 1 "zb_zfs_list_datasets() expects 1 argument: \"pool\""
     fi
     {
-        local sets=$(${b_zfs} list -r -H -o name -t filesystem ${1});
+        local sets=$(${zbb_zfs} list -r -H -o name -t filesystem ${1});
         local rval=$?;
     }> /dev/null 2>&1
     [ -z "${sets}" ] && return ${rval}
